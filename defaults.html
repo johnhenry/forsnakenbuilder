@@ -1,0 +1,109 @@
+<html>
+  <template id="components">
+    [ { "tag": "imagedata-emitter", "attributes": {}, "definition":
+    "http://localhost:8080/app/web/forsnaken/ImageData/imagedata-emitter.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78224" },
+    { "tag": "event-consumer", "attributes": { "events": "render", "onevent":
+    "console.log(event);" }, "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/event-consumer/index.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78225" },
+    { "tag": "canvas-renderer", "attributes": { "border-size": "0", "width":
+    "800", "height": "400" }, "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/canvasrenderer/index.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78226" },
+    { "tag": "shader-grid", "attributes": { "width": "8", "height": "8" },
+    "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/pixelshaders/grid-shader.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78227" },
+    { "tag": "shader-zoom", "attributes": { "value": "8" }, "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/pixelshaders/zoom-shader.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78228" },
+    { "tag": "forsnaken-game", "attributes": { "width": "100", "height": "50" },
+    "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/SnakeGame/index.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78229" },
+    { "tag": "snake-objects", "attributes": { "width": "8", "height": "8" },
+    "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/SnakeGame/objects/index.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78230" },
+    { "tag": "internal-timer", "attributes": { "id": "timer", "fps": "24" },
+    "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/internal-timer.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78231" },
+    { "tag": "forsnaken-apple", "attributes": { "multi": "64", "x-range":
+    "10,89", "y-range": "10,39" }, "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/SnakeGame/entities/apple.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78232" },
+    { "tag": "forsnaken-snake", "attributes": { "width": "8", "height": "8" },
+    "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/SnakeGame/entities/snake.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78233" },
+    { "tag": "forsnaken-wall", "attributes": { "x": "1", "y": "1", "x1": "9",
+    "y1": "9", "diagonal": "" }, "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/SnakeGame/entities/wall.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78234" },
+    { "tag": "brain-swipe", "attributes": { "threshold": "30" }, "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/brains/human/swipe.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78235" },
+    { "tag": "brain-gamepad", "attributes": { "index": "0", "touch": "" },
+    "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/brains/human/gamepad.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78236" },
+    { "tag": "brain-keyboard", "attributes": { "arrows": "" }, "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/brains/human/keyboard.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78237" },
+    { "tag": "brain-random", "attributes": { "weights":
+    "{\"clockwise\":1,\"counterclockwise\":1,\" \":2}" }, "definition":
+    "https://johnhenry.github.io/app/web/forsnaken/brains/ai/random.component.mjs",
+    "contentBefore": "", "contentAfter": "", "archived": false, "id": "78238" }
+    ]
+  </template>
+  <template id="styles">
+    html { width: 100%; height: 100%; margin: 0; padding: 0; display: contents;
+    } body { color: white; background-color: black; width: 100%; height: 100%;
+    margin: 0; padding: 0; display: flex; place-content: center; align-items:
+    stretch; } canvas { width: 100%; height: 100%; align-items: center; }
+  </template>
+  <body>
+    <div id="inputs"></div>
+  </body>
+  <style>
+    body {
+      height: 100%;
+      color: rgba(100, 100, 100, 1);
+      background-color: rgba(238, 238, 238, 1);
+    }
+
+    #inputs:empty::before {
+      content: "Drag components here";
+      text-align: center;
+    }
+    #inputs,
+    #inputs div {
+      display: inline-flex;
+      flex-direction: column;
+      padding: 8px;
+      padding-left: 16px;
+      justify-content: space-around;
+      color: rgba(100, 100, 100, 1);
+      background-color: rgba(238, 238, 238, 0.75);
+    }
+    #inputs div {
+      border-radius: 5px;
+      margin: 8px;
+      box-shadow: rgba(238, 238, 238, 1) 4px 4px 8px,
+        rgba(170, 170, 170, 1) 4px 4px 8px;
+    }
+
+    #inputs div:empty {
+      display: inline;
+    }
+
+    #inputs div::before {
+      content: "<" attr(data-content-before-tag) ">" attr(data-content-before);
+    }
+    #inputs div::after {
+      content: attr(data-content-after) "</" attr(data-tag) " >";
+    }
+  </style>
+</html>
