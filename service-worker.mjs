@@ -3,7 +3,7 @@ import {
   Router,
   updateRequest,
   ActionSingle,
-} from "https://johnhenry.github.io/std/js/router@0.0.0/index.mjs";
+} from "https://johnhenry.github.io/lib/js/router/0.0.0/index.mjs";
 
 const pathname = globalThis.location.href;
 const local = pathname.substring(0, pathname.lastIndexOf("/")); // This folder's location
