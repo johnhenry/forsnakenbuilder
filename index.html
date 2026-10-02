@@ -1,20 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="manifest" href="./index.webmanifest" />
-    <title>Loading Remote Application...</title>
-    <script type="module">
-      window.addEventListener("load", async (event) => {
-        await navigator.serviceWorker.register("./service-worker.mjs", {
-          type: "module",
-        });
-        window.location.reload();
-      });
+    <meta charset="utf-8" />
+    <title>Forsnaken Builder</title>
+    <meta http-equiv="refresh" content="0; url=https://johnhenry.github.io/htmlbuilder/?project=./projects/forsnaken.html" />
+    <script>
+      // Earlier versions installed a service worker here; remove it.
+      navigator.serviceWorker?.getRegistrations().then((all) => all.forEach((r) => r.unregister()));
     </script>
   </head>
   <body>
-    Loading Remote Application...
+    <p>
+      The snake game builder is now a project in HTML Builder:
+      <a href="https://johnhenry.github.io/htmlbuilder/?project=./projects/forsnaken.html">open it there</a>.
+    </p>
   </body>
 </html>
